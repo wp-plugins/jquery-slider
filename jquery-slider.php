@@ -100,7 +100,7 @@ if(!is_admin()){
 							navigationArrows:".get_option('js_nav').",
 							navigationButtons:".get_option('js_paging').",
 							thumbnailsType:'".get_option('js_thumbtype')."',
-							timerAnimation:'".get_option('js_timer')."'
+							timerAnimation:".get_option('js_timer')."
 						});
 					});
 				</script>";
