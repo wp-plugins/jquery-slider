@@ -37,3 +37,11 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
+msgid "Show Timer"
+msgstr ""
+
+msgid "Thumbnail Type"
+msgstr ""
+
+msgid "Tooltip"
+msgstr ""

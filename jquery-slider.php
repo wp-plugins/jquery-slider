@@ -3,9 +3,9 @@
 Plugin Name: jQuery Slider
 Description: jQuery slider with lots of customization options
 Author: Vijay Kumar
-Version: 1.3
-Author URI: http://www.wp-contents.com
-Plugin URI: http://www.wp-contents.com/jquery-slider/
+Version: 1.4
+Author URI: http://www.iwebrays.com
+Plugin URI: http://www.iwebrays.com/jquery-slider/
 
  Copyright 2011  Vijay Kumar  (email : bidla.vijay@gmail.com)
 
@@ -36,42 +36,43 @@ function js_activate(){
 	add_option('js_pause', true);
 	add_option('js_paging', true);
 	add_option('js_nav', true);
-
-    
+	add_option('js_timer', true);
+	add_option('js_thumbtype', 'tooltip');
 }
 
 /* Slider Post Types */
 add_action('init', 'js_custom_init');
 function js_custom_init() {
-  load_plugin_textdomain( 'jquery_slider', false, basename(dirname(__FILE__)) . '/languages' );
-  $labels = array(
-	'name' => _x('Slides', 'post type general name'),
-    'singular_name' => _x('Slide', 'post type singular name'),
-    'add_new' => _x('Add New', 'slide'),
-    'add_new_item' => __('Add New Slide'),
-    'edit_item' => __('Edit Slide'),
-    'new_item' => __('New Slide'),
-    'view_item' => __('View Slide'),
-    'search_items' => __('Search Slides'),
-    'not_found' =>  __('No slides found'),
-    'not_found_in_trash' => __('No slides found in Trash'), 
-    'parent_item_colon' => '',
-    'menu_name' => 'Slides'
-  );
-  $args = array(
-	'labels' => $labels,
-    'public' => true,
-    'publicly_queryable' => true,
-    'show_ui' => true, 
-    'show_in_menu' => true, 
-    'query_var' => true,
-    'rewrite' => true,
-    'capability_type' => 'post',
-    'has_archive' => false, 
-    'hierarchical' => false,
-    'menu_position' => 20,
-    'supports' => array('title','editor','custom-fields','thumbnail')
-  ); 
+	load_plugin_textdomain( 'jquery_slider', false, basename(dirname(__FILE__)) . '/languages' );
+	
+	$labels = array(
+		'name' => _x('Slides', 'post type general name'),
+		'singular_name' => _x('Slide', 'post type singular name'),
+		'add_new' => _x('Add New', 'slide'),
+		'add_new_item' => __('Add New Slide'),
+		'edit_item' => __('Edit Slide'),
+		'new_item' => __('New Slide'),
+		'view_item' => __('View Slide'),
+		'search_items' => __('Search Slides'),
+		'not_found' =>  __('No slides found'),
+		'not_found_in_trash' => __('No slides found in Trash'), 
+		'parent_item_colon' => '',
+		'menu_name' => 'Slides');
+
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true, 
+		'show_in_menu' => true, 
+		'query_var' => true,
+		'rewrite' => true,
+		'capability_type' => 'post',
+		'has_archive' => false,
+		'hierarchical' => false,
+		'menu_position' => 20,
+		'supports' => array('title','editor','custom-fields','thumbnail')); 
+  
   register_post_type('slide',$args);
 }
 
@@ -94,7 +95,12 @@ if(!is_admin()){
 					jQuery(document).ready(function(){
 						jQuery('.slider').jquerySlider({
 							width:".get_option('js_width').", 
-							height:".get_option('js_height').", pauseSlideshowOnHover:".get_option('js_pause').",
+							height:".get_option('js_height').",
+							pauseSlideshowOnHover:".get_option('js_pause').",
+							navigationArrows:".get_option('js_nav').",
+							navigationButtons:".get_option('js_paging').",
+							thumbnailsType:'".get_option('js_thumbtype')."',
+							timerAnimation:'".get_option('js_timer')."'
 						});
 					});
 				</script>";
@@ -115,12 +121,10 @@ function jquery_slider(){
 
 		  $images = get_posts( 'post_parent='.$post->ID.'&post_type=attachment&post_mime_type=image' );
 
-		  if ( empty($images) ) {
-				// no attachments here
-		  } else {
-				$imgAttr = wp_get_attachment_image_src( $images[0]->ID );
-				$out .= '<img src="'.$images[0]->guid.'" />';
-				$out .= '<img class="thumbnail" src="'.$imgAttr[0].'" />';
+		  if ( !empty($images) ) {
+			  $imgAttr = wp_get_attachment_image_src( $images[0]->ID );
+			  $out .= '<img src="'.JSLIDER_URL.'/timthumb.php?src='.$images[0]->guid.'&w='.get_option('js_width').'&h='.get_option('js_height').'" />';
+			  $out .= '<img class="thumbnail" src="'.$imgAttr[0].'" />';
 		  }
 
 		$out .= '<div class="caption">'.get_the_content($post->ID).'</div>';
