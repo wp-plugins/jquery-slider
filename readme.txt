@@ -4,7 +4,7 @@ Contributors: Vijay Kumar
 Tags: jQuery, Slider, Gallery, Plugin, Widget
 Requires at least: 2.8
 Tested up to: 3.4.2
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv2
 
 This is a highly customizable jQuery Slider plugin. You can set its width, height, pagination and other parameters.
@@ -35,6 +35,9 @@ image via posts content area and featured image section.
 
 == Changelog ==
 
+
+= 1.4.1 =
+* Fixed broken plugin issue.
 
 = 1.4 =
 * Added timthumb.php script to resize images.
