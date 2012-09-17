@@ -33,10 +33,10 @@ register_activation_hook(__FILE__, 'js_activate');
 function js_activate(){
 	add_option('js_width', '750');
 	add_option('js_height', '345');
-	add_option('js_pause', true);
-	add_option('js_paging', true);
-	add_option('js_nav', true);
-	add_option('js_timer', true);
+	add_option('js_pause', 'true');
+	add_option('js_paging', 'true');
+	add_option('js_nav', 'true');
+	add_option('js_timer', 'true');
 	add_option('js_thumbtype', 'tooltip');
 }
 
