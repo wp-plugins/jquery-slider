@@ -12,8 +12,8 @@ This is a highly customizable jQuery Slider plugin. You can set its width, heigh
 == Description ==
 
 This is a highly customizable jQuery Slider plugin. You can set its width, height, pagination and other
-parameters. You can use it on your post or page via a schortcode <pre>`[jQuery Slider]`</pre> or in your template 
-file  using php function <pre>`<?php if(function_exists('jquery_slider')){ jquery_slider(); } ?>`</pre>.
+parameters. You can use it on your post or page using schortcode `[jQuery Slider]` or in your template 
+file  using php function `<?php if(function_exists('jquery_slider')){ jquery_slider(); } ?>`.
 
 Slides can be added as post type slide from slides menu.
 
