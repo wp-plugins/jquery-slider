@@ -1,0 +1,47 @@
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vijay Kumar <bidla.vijay@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Width"
+msgstr ""
+
+msgid "Height"
+msgstr ""
+
+msgid "Pause on hover"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Show pagination"
+msgstr ""
+
+msgid "Show navigation"
+msgstr ""
+
+msgid "Save Changes"
+msgstr ""
+
+msgid "Show Timer"
+msgstr ""
+
+msgid "Thumbnail Type"
+msgstr ""
+
+msgid "Tooltip"
+msgstr ""
