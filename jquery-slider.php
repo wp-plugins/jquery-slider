@@ -3,7 +3,7 @@
 Plugin Name: jQuery Slider
 Description: jQuery slider with lots of customization options
 Author: vijaybidla
-Version: 1.4.1
+Version: 1.4.2
 Author URI: http://www.iwebrays.com
 Plugin URI: http://www.iwebrays.com/jquery-slider/
 
@@ -71,9 +71,42 @@ function js_custom_init() {
 		'has_archive' => false,
 		'hierarchical' => false,
 		'menu_position' => 20,
-		'supports' => array('title','editor','custom-fields','thumbnail')); 
+		'supports' => array('editor','thumbnail')); 
   
   register_post_type('slide',$args);
+}
+
+add_filter( 'manage_edit-slide_columns', 'set_custom_edit_slide_columns' );
+add_action( 'manage_slide_posts_custom_column' , 'custom_slide_column', 10, 2 );
+
+function set_custom_edit_slide_columns($columns) {
+    unset($columns['title']);
+	unset($columns['date']);
+    return $columns+array('title' => __('Title'),
+                          'thumbnail' => __('Thumbnail'), 
+                 );
+}
+
+function custom_slide_column( $column, $post_id ) {
+    switch ( $column ) {
+		case 'edit':
+			echo edit_post_link('Edit', '<p>', '</p>', $post_id);
+			break;
+		
+		case 'thumbnail':
+			$images = get_posts( 'post_parent='.$post_id.'&post_type=attachment&post_mime_type=image' );
+			if ( !empty($images) ) {
+				$imgAttr = wp_get_attachment_image_src( $images[0]->ID );
+				echo '<img src="'.JSLIDER_URL.'/timthumb.php?src='.$images[0]->guid.'&w=50&h=50" />';
+			} else {
+				echo 'No Image';
+			}
+			break;
+			
+		case 'title':
+			echo the_excerpt(); 
+			break;
+    }
 }
 
 // Load javascripts and css files
@@ -100,7 +133,15 @@ if(!is_admin()){
 							navigationArrows:".get_option('js_nav').",
 							navigationButtons:".get_option('js_paging').",
 							thumbnailsType:'".get_option('js_thumbtype')."',
-							timerAnimation:".get_option('js_timer')."
+							timerAnimation:".get_option('js_timer').",
+							slideProperties:{
+								0:{effectType:'fade', horizontalSlices:'1', verticalSlices:'1', slicePattern:'leftToRight', captionPosition:'left', captionShowEffect:'slide', captionHeight:220, slideshowDelay:2000},
+								1:{effectType:'fade', horizontalSlices:'1', verticalSlices:'1', slicePattern:'leftToRight', captionPosition:'left', captionShowEffect:'fade', captionHeight:120, slideshowDelay:2000},
+								2:{effectType:'slide', horizontalSlices:'10', verticalSlices:'1', slicePattern:'rightToLeft', sliceDuration:'700'},
+								3:{effectType:'height', horizontalSlices:'10', verticalSlices:'1', slicePattern:'leftToRight', slicePoint:'centerBottom', sliceDuration:'500', captionSize:'45'},
+								4:{effectType:'scale', horizontalSlices:'10', verticalSlices:'5', sliceDuration:'800'},
+								5:{effectType:'height', horizontalSlices:'1', verticalSlices:'15', slicePattern:'bottomToTop', slicePoint:'centerTop', sliceDuration:'700', captionPosition:'left', captionSize:'150', captionHideEffect:'slide'}
+							}
 						});
 					});
 				</script>";

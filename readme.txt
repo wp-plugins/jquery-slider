@@ -4,7 +4,7 @@ Contributors: vijaybidla
 Tags: jQuery, Slider, Gallery, Plugin, Widget
 Requires at least: 2.8
 Tested up to: 3.4.2
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv2
 
 This is a highly customizable jQuery Slider plugin. You can set its width, height, pagination and other parameters.
@@ -17,7 +17,7 @@ file  using php function `<?php if(function_exists('jquery_slider')){ jquery_sli
 
 Slides can be added as post type slide from slides menu.
 
-For more information please visit: http://www.iwebrays.com/
+For more details, please visit: http://www.iwebrays.com/
 
 == Installation ==
 
@@ -35,6 +35,9 @@ image via posts content area and featured image section.
 
 == Changelog ==
 
+
+= 1.4.2 =
+* Added thumbnail in slides list in admin.
 
 = 1.4.1 =
 * Fixed broken plugin issue.
