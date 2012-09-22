@@ -2,7 +2,7 @@
 /*
 Plugin Name: jQuery Slider
 Description: jQuery slider with lots of customization options
-Author: Vijay Kumar
+Author: vijaybidla
 Version: 1.4.1
 Author URI: http://www.iwebrays.com
 Plugin URI: http://www.iwebrays.com/jquery-slider/

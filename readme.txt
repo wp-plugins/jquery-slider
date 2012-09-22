@@ -1,6 +1,6 @@
 === jQuery Slider ===
 
-Contributors: Vijay Kumar
+Contributors: vijaybidla
 Tags: jQuery, Slider, Gallery, Plugin, Widget
 Requires at least: 2.8
 Tested up to: 3.4.2
@@ -17,7 +17,7 @@ file  using php function `<?php if(function_exists('jquery_slider')){ jquery_sli
 
 Slides can be added as post type slide from slides menu.
 
-You can see its working demo here: http://www.iwebrays.com/jquery-slider.html
+For more information please visit: http://www.iwebrays.com/
 
 == Installation ==
 
